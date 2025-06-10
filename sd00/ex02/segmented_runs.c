@@ -1,0 +1,4 @@
+int count_segments(const int *arr, int size)
+{
+
+}
