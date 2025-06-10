@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float average(const int *arr, int size);
+float	average(const int *arr, int size);
 
 #endif

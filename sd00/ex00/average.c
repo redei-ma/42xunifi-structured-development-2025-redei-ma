@@ -1,6 +1,6 @@
 #include "average.h"
 
-float average(const int *arr, int size)
+float	average(const int *arr, int size)
 {
 	int		i;
 	float	sum;
