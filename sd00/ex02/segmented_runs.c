@@ -1,6 +1,6 @@
 #include "segmented_runs.h"
 
-int	is_valid(const int *arr, int start, int end)
+static int	is_valid(const int *arr, int start, int end)
 {
 	int	count = 0;
 
