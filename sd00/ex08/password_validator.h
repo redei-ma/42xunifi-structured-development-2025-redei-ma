@@ -17,6 +17,8 @@ typedef struct
 	int		last_index;	// Index of the last password
 } PasswordHistory;
 
+
+
 PwStatus	validate_password(const char *new_pw, PasswordHistory *history);
 
 #endif

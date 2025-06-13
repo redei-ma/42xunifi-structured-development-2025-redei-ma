@@ -69,10 +69,10 @@ static void	third_mapper(const int *scores, int size, const char **mapped_grades
 
 void	map_scores(const int *scores, int size, GradeMapper mapper, const char **mapped_grades)
 {
-	if (mapper == X11)
+	if (mapper == XI1)
 		first_mapper(scores, size, mapped_grades);
-	else if (mapper == X12)
+	else if (mapper == XI2)
 		second_mapper(scores, size, mapped_grades);
-	else if (mapper == X13)
+	else if (mapper == XI3)
 		third_mapper(scores, size, mapped_grades);
 }
