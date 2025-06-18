@@ -59,7 +59,7 @@ struct WorkoutPlan	*create_workout_schedule(char *username)
 		return (NULL);
 	}
 
-	for (day = 0; day < duration; day++)
+	for (int day = 0; day < duration; day++)
 	{
 		assign_daily_exercises(plan, day);
 		assign_daily_tips(plan, day);
