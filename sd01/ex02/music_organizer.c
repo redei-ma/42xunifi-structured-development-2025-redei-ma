@@ -18,7 +18,10 @@
 
 struct MusicLibrary	*organize_music_library(const char *directory_path)
 {
-	struct MusicLibrary *library;
+	struct MusicLibrary	*library;
+	const char			**filenames;
+	struct MusicFile	*song;
+
 	library = create_music_library();
 	if (!library)
 	{
@@ -26,7 +29,6 @@ struct MusicLibrary	*organize_music_library(const char *directory_path)
 		return (NULL);
 	}
 
-	const char **filenames;
 	filenames = scan_directory(directory_path);
 	if (!filenames)
 	{
@@ -34,8 +36,6 @@ struct MusicLibrary	*organize_music_library(const char *directory_path)
 		free(library);
 		return (NULL);
 	}
-
-	struct MusicFile *song;
 	for (int i = 0; filenames[i] != NULL; i++)
 	{
 		song = process_music_file(directory_path, filenames[i]);

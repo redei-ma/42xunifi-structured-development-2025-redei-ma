@@ -20,7 +20,7 @@ int	process_food_order(struct OrderRequest *request)
 {
 	struct OrderConfirmation	*confirmation;
 
-	for (struct new_order = request; new_order; new_order = new_order->next)
+	for (struct OrderRequest *new_order = request; new_order; new_order = new_order->next)
 	{
 		if (check_restaurant_status(request))
 		{
