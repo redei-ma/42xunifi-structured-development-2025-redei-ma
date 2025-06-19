@@ -1,0 +1,44 @@
+1. manager_init(filename)
+Quando: Prima di tutto, all'inizio del programma
+Perché: Alloca memoria per la struttura e salva il nome del file
+Cosa fa: Crea il "gestore vuoto" per i contatti, memorizza il filename per salvare dopo
+
+2. manager_load_from_file(manager)
+Quando: Subito dopo l'inizializzazione
+Perché: Dobbiamo caricare i contatti esistenti dal file (se esiste)
+Cosa fa: Apre il file CSV e per ogni riga chiama parse_contact_line()
+
+3. parse_contact_line(line, &id, &name, &phone, &email, &city, &address)
+Quando: Dentro manager_load_from_file(), per ogni riga del file
+Perché: Dobbiamo estrarre tutti i 6 campi dalla stringa CSV
+Cosa fa: Spezza "1,Mario Rossi,3331234567,mario@email.com,Roma,Via Roma 1" nei 6 pezzi
+
+4. validate_contact(id, name, phone, email, city)
+Quando: Dentro manager_load_from_file(), dopo aver fatto il parsing
+Perché: Dobbiamo controllare che i dati siano validi secondo le regole
+Cosa fa: Verifica ID positivo, nome non vuoto, telefono solo cifre, email con @ e dominio
+
+5. show_menu()
+Quando: Nel loop principale, dopo aver caricato i contatti
+Perché: L'utente deve scegliere quale operazione fare
+Cosa fa: Mostra le 7 opzioni del menu e prende l'input dell'utente
+
+6. handle_menu_choice(manager, choice)
+Quando: Dopo che l'utente ha scelto dal menu
+Perché: Dobbiamo eseguire l'operazione richiesta
+Cosa fa: Switch sui 7 casi: lista, ricerca, aggiungi, aggiorna, elimina, salva, esci
+
+7. manager_save_to_file(manager)
+Quando: Quando l'utente sceglie "Salva" o prima di uscire
+Perché: Le modifiche devono essere scritte sul file per essere permanenti
+Cosa fa: Riscrive tutto il file CSV con i contatti aggiornati
+
+8. free_contact(contact)
+Quando: Dentro manager_free(), per ogni singolo contatto
+Perché: Dobbiamo liberare le stringhe (name, phone, email, city, address) di ogni contatto
+Cosa fa: fa free() di tutte le 5 stringhe del singolo contatto
+
+9. manager_free(manager)
+Quando: Alla fine, prima di uscire dal programma
+Perché: Dobbiamo liberare tutta la memoria allocata
+Cosa fa: Chiama free_contact() per ogni contatto, poi libera array, filename e struttura

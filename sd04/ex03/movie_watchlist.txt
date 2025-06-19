@@ -1,0 +1,44 @@
+1. watchlist_init(filename)
+Quando: Prima di tutto, all'inizio del programma
+Perché: Alloca memoria per la struttura e salva il nome del file
+Cosa fa: Crea la "lista vuota" per i film, memorizza il filename per salvare dopo
+
+2. watchlist_load_from_file(watchlist)
+Quando: Subito dopo l'inizializzazione
+Perché: Dobbiamo caricare i film esistenti dal file (se esiste)
+Cosa fa: Apre il file CSV e per ogni riga chiama parse_movie_line()
+
+3. parse_movie_line(line, &id, &title, &genre, &year, &rating, &watched)
+Quando: Dentro watchlist_load_from_file(), per ogni riga del file
+Perché: Dobbiamo estrarre tutti i 6 campi dalla stringa CSV
+Cosa fa: Spezza "1,Inception,Sci-Fi,2010,8.5,1" nei 6 pezzi
+
+4. validate_movie(id, title, genre, year, rating, watched)
+Quando: Dentro watchlist_load_from_file(), dopo aver fatto il parsing
+Perché: Dobbiamo controllare che i dati siano validi secondo le regole
+Cosa fa: Verifica ID positivo, titolo/genere non vuoti, anno valido, rating 0-10, watched 0 o 1
+
+5. show_menu()
+Quando: Nel loop principale, dopo aver caricato i film
+Perché: L'utente deve scegliere quale operazione fare
+Cosa fa: Mostra le 7 opzioni del menu e prende l'input dell'utente
+
+6. handle_menu_choice(watchlist, choice)
+Quando: Dopo che l'utente ha scelto dal menu
+Perché: Dobbiamo eseguire l'operazione richiesta
+Cosa fa: Switch sui 7 casi: aggiungi, lista, ricerca, aggiorna, elimina, salva, esci
+
+7. watchlist_save_to_file(watchlist)
+Quando: Quando l'utente sceglie "Salva" o prima di uscire
+Perché: Le modifiche devono essere scritte sul file per essere permanenti
+Cosa fa: Riscrive tutto il file CSV con i film aggiornati
+
+8. free_movie(movie)
+Quando: Dentro watchlist_free(), per ogni singolo film
+Perché: Dobbiamo liberare le stringhe (title, genre) di ogni film
+Cosa fa: fa free() delle 2 stringhe del singolo film
+
+9. watchlist_free(watchlist)
+Quando: Alla fine, prima di uscire dal programma
+Perché: Dobbiamo liberare tutta la memoria allocata
+Cosa fa: Chiama free_movie() per ogni film, poi libera array, filename e struttura

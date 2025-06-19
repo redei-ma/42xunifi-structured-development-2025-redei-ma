@@ -1,0 +1,34 @@
+1. wallet_init()
+Quando: Prima di tutto, all'inizio del programma
+Perché: Alloca memoria per transactions e inizializza contatori
+Cosa fa: Crea il "portafoglio vuoto" per le transazioni
+
+2. wallet_load_from_file(filename)
+Quando: Subito dopo l'inizializzazione
+Perché: Dobbiamo riempire il wallet con i dati dal file
+Cosa fa: Apre il file CSV e per ogni riga chiama parse_transaction_line()
+
+3. parse_transaction_line(line, &date, &category, &amount, &description)
+Quando: Dentro wallet_load_from_file(), per ogni riga del file
+Perché: Dobbiamo estrarre data, categoria, importo e descrizione
+Cosa fa: Spezza "2024-01-15,Cibo,25.50,Pizza" nei 4 pezzi
+
+4. parse_date(date_string, &date)
+Quando: Dentro parse_transaction_line(), dopo aver estratto la data
+Perché: "2024-01-15" deve diventare year=2024, month=1, day=15
+Cosa fa: Converte stringa in numeri e controlla se la data è valida
+
+5. display_summary(wallet)
+Quando: Alla fine, quando tutte le transazioni sono caricate
+Perché: Dobbiamo mostrare il report finale all'utente
+Cosa fa: Calcola e stampa totale, numero transazioni e breakdown per categoria
+
+6. free_transaction(transaction)
+Quando: Dentro wallet_free(), per ogni singola transazione
+Perché: Dobbiamo liberare le stringhe (category e description) di ogni transazione
+Cosa fa: fa free() di category e description della singola transazione
+
+7. wallet_free(wallet)
+Quando: Alla fine, prima di uscire dal programma
+Perché: Dobbiamo liberare tutta la memoria allocata
+Cosa fa: Chiama free_transaction() per ogni transazione, poi libera l'array e la struttura

@@ -1,0 +1,39 @@
+1. catalog_init()
+Quando: Prima di tutto, all'inizio del programma
+Perché: Alloca memoria per la struttura t_catalog e inizializza i campi
+Cosa fa: Crea lo "scaffale vuoto" dove metteremo i libri
+
+2. catalog_load_from_file(filename)
+Quando: Subito dopo l'inizializzazione
+Perché: Dobbiamo riempire il catalogo con i dati dal file
+Cosa fa: Apre il file CSV e per ogni riga chiama parse_csv_line()
+
+3. parse_csv_line(line, &id, &title, &author)
+Quando: Dentro catalog_load_from_file(), per ogni riga del file
+Perché: Dobbiamo estrarre ID, titolo e autore dalla stringa CSV
+Cosa fa: Spezza la riga "1,Il Signore degli Anelli,Tolkien" nei 3 pezzi
+
+4. get_search_choice()
+Quando: Dopo aver caricato tutti i libri
+Perché: L'utente deve scegliere se cercare per titolo o autore
+Cosa fa: Mostra menu e prende input (1 o 2)
+
+5. get_search_query()
+Quando: Dopo aver preso la scelta del tipo di ricerca
+Perché: Serve la parola da cercare
+Cosa fa: Chiede "Cosa vuoi cercare?" e prende l'input
+
+6. search_books(catalog, query, search_type)
+Quando: Quando abbiamo sia la scelta che la query
+Perché: Dobbiamo trovare i libri che corrispondono
+Cosa fa: Scorre tutti i libri e trova quelli che matchano
+
+7. display_results(catalog, query, search_type)
+Quando: Dopo la ricerca
+Perché: Dobbiamo mostrare i risultati all'utente
+Cosa fa: Stampa ID, titolo e autore dei libri trovati
+
+8. catalog_free(catalog)
+Quando: Alla fine, prima di uscire dal programma
+Perché: Dobbiamo liberare tutta la memoria allocata
+Cosa fa: fa free() di tutte le stringhe e della struttura
