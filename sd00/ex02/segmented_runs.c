@@ -41,25 +41,3 @@ int	count_segments(const int *arr, int size)
 		count++;
 	return (count);
 }
-
-/* int main(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		printf("Usage: %s <array of integers>\n", av[0]);
-		return (1);
-	}
-
-	int arr[100];
-	int size = 0;
-
-	for (int i = 1; i < ac; i++)
-	{
-		arr[size++] = atoi(av[i]);
-	}
-
-	int segments = count_segments(arr, size);
-	printf("Number of valid segments: %d\n", segments);
-
-	return (0);
-} */

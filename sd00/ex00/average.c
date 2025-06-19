@@ -24,19 +24,3 @@ float	average(const int *arr, int size)
 	average = sum / validate;
 	return (average);
 }
-
-/* int main(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		return (1);
-	}
-	int arr[ac - 1];
-	for (int i = 0; i < ac - 1; i++)
-	{
-		arr[i] = atoi(av[i + 1]);
-	}
-	float avg = average(arr, ac - 1);
-	printf("Average: %.2f\n", avg);
-	return (0);
-} */

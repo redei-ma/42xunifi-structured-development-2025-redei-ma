@@ -1,11 +1,11 @@
 #ifndef FILESYSTEM_H
 # define FILESYSTEM_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdbool.h>
 
 typedef	enum
 {

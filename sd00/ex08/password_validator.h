@@ -1,8 +1,8 @@
 #ifndef PASSWORD_VALIDATOR_H
 # define PASSWORD_VALIDATOR_H
 
-#include <stdbool.h>
-#include <string.h>
+# include <stdbool.h>
+# include <string.h>
 
 typedef enum
 {
